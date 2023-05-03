@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<iostream>
+#include<set>
+using namespace std;
+int main()
+{
+    set<int>s;
+    int k;
+    for(int i=0;i<5;i++)
+    {
+        cout<<"enter the element";
+        cin>>k;
+        s.insert(k);
+    }
+    set<int>::iterator it;
+    it=s.begin();
+    for(it;it!=s.end();it++)
+    cout<<*it<<endl;
+    return 0;
+}
