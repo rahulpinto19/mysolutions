@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int check(int a,vector<int>& arr)
+    {
+        string s=to_string(a);
+        sort(s.begin(),s.end());
+        int pos=0;
+        for(int i=0;i<arr.size();i++)
+        {
+            a=s[pos]-'0';
+            if(a==arr[i])
+            pos++;
+            if(pos==3)
+            return 1;
+        }
+        return 0;
+    }
+    vector<int> findEvenNumbers(vector<int>& digits) 
+    {   
+        vector<int>ans;
+        sort(digits.begin(),digits.end());
+        for(int i=100;i<1000;i++)
+        {
+            if(check(i,digits))
+            ans.push_back(i);
+            i++;
+        }
+        return ans;
+    }
+};
