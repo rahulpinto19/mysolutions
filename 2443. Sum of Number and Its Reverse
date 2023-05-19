@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int help(int x)
+    {
+         int f=0;
+        while(x>0){
+        f=f*10+x%10;
+        x=x/10;}
+        return f;
+    }
+    bool sumOfNumberAndReverse(int num) 
+    {
+        int k=num;
+        if(!num)
+        return 1;
+        for(int i=1;i<num;i++)
+        {
+            if(help(i)+i==k)
+            return 1;
+        }    
+        return 0;
+    }
+};
