@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int count(int a)
+    {
+
+        int num=0;
+        while(a)
+        {
+            if(a%2)
+            num++;
+            a/=2;
+        }
+        return num;
+    }
+    vector<int> sortByBits(vector<int>& arr) 
+    {
+        vector<pair<int,int>>temp;
+        for(auto l:arr)
+        {
+            temp.push_back( make_pair(count(l),l));
+        }    
+        sort(temp.begin(),temp.end());
+        for(int i=0;i<arr.size();i++)
+        {
+            arr[i]=temp[i].second;
+        }
+        return arr;
+    }
+};
