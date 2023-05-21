@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) 
+    {
+        vector<pair<double,int>>temp;
+        vector<vector<int>>ans;
+        for(int i=0;i<points.size();i++)
+        {
+            int z=points[i][0]*points[i][0]+points[i][1]*points[i][1];
+            temp.push_back(make_pair(sqrt(z),i));
+        }    
+        sort(temp.begin(),temp.end());
+        int i=0;
+        while(i<k)
+        {
+            ans.push_back(points[temp[i].second]);
+            i++;
+        }
+        return ans;
+    }
+};
