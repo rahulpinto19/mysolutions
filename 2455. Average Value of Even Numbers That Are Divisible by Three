@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int averageValue(vector<int>& nums) 
+    {
+        int sum=0;
+        int count=0;
+        for(auto l:nums)
+        {
+            
+            if(l%6==0)
+            {sum+=l;
+            count++;
+            }
+        }    
+        if(!sum)
+        return sum;
+        return sum/count;
+    }
+};
