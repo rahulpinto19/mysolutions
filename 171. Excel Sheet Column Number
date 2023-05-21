@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int titleToNumber(string s) 
+    {
+        int sum=s[s.size()-1]-'A'+1;
+        cout<<sum;
+        int k=1;
+        for(int i=s.size()-2;i>=0;i--)
+        {
+            k*=26;
+            sum=sum+k*(s[i]-'A'+1);
+        }    
+        return sum;
+    }
+};
