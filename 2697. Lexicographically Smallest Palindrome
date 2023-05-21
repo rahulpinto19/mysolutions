@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string makeSmallestPalindrome(string s) 
+    {
+        int first=0;
+        int last=s.length()-1;
+        while(first<=last)
+        {
+            if(s[first]!=s[last])
+            {
+                char k=min(s[first],s[last]);
+                s[first]=k;
+                s[last]=k;
+            }
+            first++;
+            last--;
+            
+        }
+        return s;
+    }
+};
