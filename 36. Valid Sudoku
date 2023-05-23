@@ -1,0 +1,51 @@
+class Solution {
+public:
+    int check(int x,int y,char val,vector<vector<char>>& matrix)
+    {
+        for(int i=0;i<9;i++)
+        {
+            if(i!=y && matrix[x][i]==val)
+            return 1;
+            if(i!=x && matrix[i][y]==val)
+            return 1;
+        }
+        return 0;
+    }
+    vector<int>  indexing(int a)
+    {
+        if(a>=0 && a<=2)
+        return {0,2};
+        else if(a>2 && a<=5)
+        return {3,5};
+        return {6,8};
+    }
+    int cube(int x,int y,char val,vector<vector<char>>& matrix)
+    {
+        vector<int>first,second;
+        first=indexing(x);
+        second=indexing(y);
+        for(int i=first[0];i<=first[1];i++)
+        for(int j=second[0];j<=second[1];j++)
+        {
+            if(i!=x && j!=y && matrix[i][j]==val)
+            return 1;
+        }
+        return 0;
+    }
+    bool isValidSudoku(vector<vector<char>>& board) 
+    {
+        int k,p;
+        for(int i=0;i<9;i++)
+        {
+            for(int j=0;j<9;j++)
+            {
+                if(board[i][j]>'0'&&board[i][j]<='9')
+                {
+                if(check(i,j,board[i][j],board)) return 0;
+                if(cube(i,j,board[i][j],board)) return 0;
+                }
+            }
+        }
+        return 1;
+    }
+};
