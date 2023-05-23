@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool validSquare(vector<int>& p1, vector<int>& p2, vector<int>& p3, vector<int>& p4) 
+    {
+        vector<vector<int>>cood;
+        set<double>ans;
+        cood.push_back(p1);
+        cood.push_back(p2);
+        cood.push_back(p3);
+        cood.push_back(p4);
+        for(int i=0;i<4;i++)
+        for(int j=i+1;j<4;j++)
+        {
+    if(i!=j)
+    {double x=((cood[i][0])-(cood[j][0]))*((cood[i][0])-(cood[j][0]));
+    double y=((cood[i][1])-(cood[j][1]))*((cood[i][1])-(cood[j][1]));
+    double dist=sqrt(x+y);
+    cout<<dist<<endl;
+        ans.insert(dist);
+        }
+        }
+        return (!ans.count(0) && ans.size() == 2);
+    }
+};
