@@ -1,0 +1,23 @@
+class Solution {
+public:
+    double new21Game(int n, int k, int maxpts) 
+    {
+        if(k==0 || n>=k+maxpts)
+        return 1;
+        vector<double>dp(n+1,0);
+        dp[0]=1.0;    
+        double cur=1.0;
+        double ans=0;
+        for(int i=1;i<=n;i++)
+        {
+            dp[i]=cur/(double)maxpts;
+            if(i<k)
+            cur+=dp[i];
+            if(i-maxpts>=0)
+            cur-=dp[i-maxpts];
+        }
+        for(int i=k;i<=n;i++)
+        ans+=dp[i];
+        return ans;
+    }
+};
