@@ -1,0 +1,23 @@
+class Solution {
+public:
+    long long maxStrength(vector<int>& nums) 
+    {
+        long long prod=1;
+        int negcount=0,negmax=INT_MIN,maxi=INT_MIN;
+        for(auto l:nums)
+        {
+            if(l)
+            prod*=l;
+            if(l<0)
+            {
+                negmax=max(negmax,l);
+                negcount++;
+            }
+            maxi=max(maxi,l);
+        }
+        if(maxi==0 && negcount<2)return 0;
+        if(maxi<0 && negcount==1)return negmax;
+        if(prod<0)return prod/negmax;
+        return prod;
+    }
+};
