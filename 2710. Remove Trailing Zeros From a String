@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string removeTrailingZeros(string num) 
+    {
+        int k=num.size()-1;
+        string ans="";
+        while(num[k]=='0')
+        {
+            num[k]='\0';
+            k--;
+        }
+        k=0;
+        while(num[k]!='\0')
+        {
+            
+            ans=ans+num[k];
+            k++;
+        }
+        return ans;
+    }
+};
