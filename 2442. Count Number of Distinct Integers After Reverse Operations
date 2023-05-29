@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int rev(int a)
+    {
+        int sum=0;
+        while(a)
+        {
+            sum=(sum*10)+a%10;
+            a/=10;
+        }
+        return sum;
+    }
+    int countDistinctIntegers(vector<int>& nums) 
+    {
+        set<int>temp;
+        for(auto l:nums)
+        {
+            temp.insert(l);
+            temp.insert(rev(l));
+        }    
+        return temp.size();
+    }
+};
