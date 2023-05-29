@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> findMatrix(vector<int>& nums) 
+    {
+        vector<int>hash(201,-1);
+        vector<int>temp;
+        vector<vector<int>>ans;   
+        for(auto l:nums)
+        {
+            hash[l]++;
+            temp.push_back(hash[l]);
+        }
+        int k=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(k==temp[i])
+            {
+                ans.push_back(vector<int>());
+                k++;
+            }
+            ans[temp[i]].push_back(nums[i]);
+        }
+        return ans;
+    }
+};
