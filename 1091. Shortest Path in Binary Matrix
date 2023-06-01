@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int shortestPathBinaryMatrix(vector<vector<int>>& g) 
+    {
+        queue<pair<pair<int,int>,int>>temp;
+        temp.push({{0,0},1});
+        if(!g[0][0] && g.size()==1) return 1;
+        if(g[0][0]) return -1;
+        vector<vector<bool>>visit(g.size(),vector<bool>(g.size(),false));
+        visit[0][0]=true;
+        while(!temp.empty())
+        {
+            pair<int,int>pairs=temp.front().first;
+            int x=pairs.first;
+            int y=pairs.second;
+            int length=temp.front().second;
+            temp.pop();
+vector<pair<int,int>>sides = {{0,1}, {0,-1},{1,0}, {-1,0},{1,1}, {-1,-1}, {1,-1}, {-1,1}};
+    for(pair<int,int>pos:sides)
+    {
+        int nx=x+pos.first;
+        int ny=y+pos.second;
+        if(nx>=0 && ny>=0 && nx<g.size() && ny<g[0].size() && g[nx][ny]==0 && !visit[nx][ny])
+        {
+            temp.push({{nx,ny},length+1});
+            visit[nx][ny]=true;
+
+            if(nx==ny && ny==g.size()-1)
+            return length+1;
+        }
+    }
+    }
+    return -1;
+    }
+};
