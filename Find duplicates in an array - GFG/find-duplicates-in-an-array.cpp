@@ -5,22 +5,22 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
   public:
-    vector<int> duplicates(int arr[], int n) {
-        unordered_map<int,int>map;
+    vector<int> duplicates(int arr[], int n) 
+    {
+        vector<int>s(n,0);
+        for(int i=0;i<n;i++)
+        {
+            s[arr[i]]++;
+        }
         vector<int>ans;
         for(int i=0;i<n;i++)
         {
-            map[arr[i]]++;
+            if(s[i]>1)
+            ans.push_back(i);
         }
-        for(auto x:map)
-        {
-            if(x.second>1)
-            ans.push_back(x.first);
-        }
-        sort(ans.begin(),ans.end());
-        if(ans.size())
-        return ans;
+        if(!ans.size())
         return {-1};
+        return ans;
     }
 };
 
