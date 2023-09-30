@@ -26,7 +26,7 @@ class Solution
             {
                 mat[i][k]=1;
             }
-            row[i]=-1;
+            row[i]=1;
         }
     }
     void booleanMatrix(vector<vector<int> > &mat)
