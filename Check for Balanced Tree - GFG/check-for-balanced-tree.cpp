@@ -107,25 +107,20 @@ class Solution{
     int help(Node*root)
     {
         if(!root)
-        return 0;
+        return 1;
         
-        return max(1+help(root->left),1+help(root->right));
+        int l = help(root->right);
+        int r = help(root->left);
+        
+        if(l==-1 || r==-1)
+        return -1;
+        if(abs(l-r)>1)
+        return -1;
+        return max(l,r)+1;
     }
     bool isBalanced(Node *root)
     {
-        if(!root)
-        return 1;
-        
-        int a = help(root->left);
-        int b = help(root->right);
-        
-        if(abs(a-b)>1)
-        return 0;
-        
-        bool left = isBalanced(root->right);
-        bool right = isBalanced(root->left);
-        
-        return left&&right;
+        return help(root)!=-1;
     }
 };
 
